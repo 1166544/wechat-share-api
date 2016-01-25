@@ -8,44 +8,40 @@ import React, {
   Component,
   StyleSheet,
   Text,
-  View
+  View,
+  NavigatorIOS
 } from 'react-native';
 
-class MyReact extends Component {
+class PropertyFinderApp extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome James Liauw!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <NavigatorIOS
+          style={styles.container}
+          initialRoute={{
+              title: 'Property Finder',
+              component: SearchPage
+          }}>
+      </NavigatorIOS>
     );
   }
 }
 
+class HelloWorld extends Component{
+    render() {
+        return <Text style={styles.text}>HelloWorld(again)</Text>;
+    }
+}
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flex: 1
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  text:{
+      color: 'black',
+      backgroundColor: 'white',
+      fontSize: 30,
+      margin: 80
+  }
 });
 
-AppRegistry.registerComponent('MyReact', () => MyReact);
+AppRegistry.registerComponent('PropertyFinder', () => PropertyFinderApp);
