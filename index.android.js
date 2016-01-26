@@ -1,49 +1,14 @@
 /**
- * Sample React Native App
+ * React Native App
  * https://github.com/facebook/react-native
  */
 'use strict';
 import React, {
-  AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  View,
-  NavigatorIOS
-} from 'react-native';
+    AppRegistry
+    } from 'react-native';
 
-import SearchPage, {} from './SearchPage';
+// 将主要入口逻辑放至ANDROID专用目录内，方便管理
+var MyReact = require('./src/android/app');
 
-class MyReact extends Component {
-  render() {
-    return (
-      <NavigatorIOS
-          style={styles.container}
-          initialRoute={{
-              title: 'Property Finder',
-              component: SearchPage
-          }}>
-      </NavigatorIOS>
-    );
-  }
-}
-
-class HelloWorld extends Component{
-    render() {
-        return <Text style={styles.text}>HelloWorld(again)</Text>;
-    }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  text:{
-      color: 'black',
-      backgroundColor: 'white',
-      fontSize: 30,
-      margin: 80
-  }
-});
-
+// 注册组件
 AppRegistry.registerComponent('MyReact', () => MyReact);

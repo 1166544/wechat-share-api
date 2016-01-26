@@ -6,12 +6,11 @@ import React, {
     TextInput,
     View,
     TouchableHightlight,
-    ActivityIndicatorIOS,
     Image,
     Component
 } from 'react-native';
 
-import SearchResults, {} from './SearchResults';
+var SearchResults = require('./SearchResults');
 
 /**
  * 定义样式
@@ -101,7 +100,7 @@ class SearchPage extends Component{
      * @param props
      */
     constructor(props) {
-        super(props);
+        //super(props);
         this.state = {
             searchString: 'london',
             isLoading: false,
@@ -118,9 +117,7 @@ class SearchPage extends Component{
         this.setState({ isLoading: false });
         if (response.application_response_code.substr(0, 1) === '1') {
             this.props.navigator.push({
-                title: 'Results',
-                component: SearchResults,
-                passProps: { listings: response.listings }
+                name: 'SearchResults'
             });
         } else {
             this.setState({ message: 'Location error plaese try again.' });
@@ -180,11 +177,11 @@ class SearchPage extends Component{
      * 渲染逻辑
      */
     render(){
-        var spinner =
-            this.state.isLoading ?
-            (<ActivityIndicatorIOS hidden='true' size='large'/>)
-            :
-            (<View/>);
+        var spinner = <View/>
+            //this.state.isLoading ?
+            //(<ActivityIndicatorIOS hidden='true' size='large'/>)
+            //:
+            //(<View/>);
 
         return (
             <View style={styles.container}>

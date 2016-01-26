@@ -10,7 +10,7 @@ import React, {
     Component
 } from 'react-native';
 
-import PropertyView, {} from './PropertyView';
+var PropertyView = require('./PropertyView');
 
 /**
  * 定义样式
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
 
 class SearchResults extends Component {
     constructor(props) {
-        super(props);
         var dataChange = {rowHasChanged: (r1, r2) => r1.guid !== r2.guid};
         var dataSource = new ListView.DataSource(dataChange);
         this.state = { dataSource: dataSource.cloneWithRows(this.props.listings) };
@@ -58,10 +57,13 @@ class SearchResults extends Component {
     rowPressed(propertyGuid) {
         var property = this.props.listings.filter(prop => prop.guid === propertyGuid[0]);
 
-        this.propps.navigator.push({
-            title: 'Property',
-            component: PropertyView,
-            passProps: {property: property}
+        //this.propps.navigator.push({
+        //    title: 'Property',
+        //    component: PropertyView,
+        //    passProps: {property: property}
+        //});
+        this.props.navigator.push({
+            name: 'PropertyView'
         });
     }
 
