@@ -10,6 +10,8 @@ import React, {
     Component
 } from 'react-native';
 
+import PropertyView, {} from './PropertyView';
+
 /**
  * 定义样式
  */

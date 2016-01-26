@@ -11,12 +11,14 @@ import React, {
     Component
 } from 'react-native';
 
+import SearchResults, {} from './SearchResults';
+
 /**
  * 定义样式
  */
 const styles = StyleSheet.create({
     description: {
-        marginButtom: 20,
+        marginBottom: 20,
         fontSize: 18,
         textAlign: 'center',
         color: '#656565'
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
         borderColor: '#48BBEC',
         borderWidth: 1,
         borderRadius: 8,
-        marginButtom: 10,
+        marginBottom: 10,
         alignSelf: 'stretch',
         justifyContent: 'center'
     },

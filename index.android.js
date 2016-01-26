@@ -12,7 +12,9 @@ import React, {
   NavigatorIOS
 } from 'react-native';
 
-class PropertyFinderApp extends Component {
+import SearchPage, {} from './SearchPage';
+
+class MyReact extends Component {
   render() {
     return (
       <NavigatorIOS
@@ -44,4 +46,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('PropertyFinder', () => PropertyFinderApp);
+AppRegistry.registerComponent('MyReact', () => MyReact);
