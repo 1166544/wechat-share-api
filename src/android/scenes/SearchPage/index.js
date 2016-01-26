@@ -10,7 +10,7 @@ import React, {
     Component
     } from 'react-native';
 
-class TaskCreate extends Component {
+class SearchPage extends Component {
 
     /**
      * 构造器
@@ -36,6 +36,7 @@ class TaskCreate extends Component {
             this.props.navigator.push({
                 name: 'TaskList'
             });
+            console.log(response);
         } else {
             this.setState({ message: 'Location error plaese try again.' });
         }
@@ -48,7 +49,7 @@ class TaskCreate extends Component {
      */
     _executeQuery(query) {
         this.setState({isLoading: true, message: 'Loading.. please wait.'});
-        fecth(query)
+        fetch(query)
             .then(response => response.json())
             .then(json => this._handleResponse(json.response))
             .catch(error => {
@@ -209,4 +210,4 @@ const styles = StyleSheet.create({
     }
 });
 
-module.exports = TaskCreate;
+module.exports = SearchPage;

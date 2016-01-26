@@ -5,9 +5,10 @@ import React, {
     Component
     } from 'react-native';
 
-var TaskList = require('./scenes/TaskList');
-var TaskCreate = require('./scenes/TaskCreate');
-var TaskView = require('./scenes/TaskView');
+// 子页面
+var SearchResult = require('./scenes/SearchResult');
+var SearchPage = require('./scenes/SearchPage');
+var SearchDetail = require('./scenes/SearchDetail');
 
 class MyReact extends Component {
 
@@ -20,14 +21,14 @@ class MyReact extends Component {
     renderScene (route, navigator) {
         var view;
         switch(route.name){
-            case 'TaskList':
-                view = (<TaskList route={route} navigator={navigator} />);
+            case 'SearchResult':
+                view = (<SearchResult route={route} navigator={navigator} />);
                 break;
-            case 'TaskCreate':
-                view = (<TaskCreate route={route} navigator={navigator} />);
+            case 'SearchPage':
+                view = (<SearchPage route={route} navigator={navigator} />);
                 break;
-            case 'TaskView':
-                view = (<TaskView route={route} navigator={navigator} />);
+            case 'SearchDetail':
+                view = (<SearchDetail route={route} navigator={navigator} />);
                 break;
             default:
                 view = null;
@@ -43,7 +44,7 @@ class MyReact extends Component {
     render() {
         return (
             <Navigator
-                initialRoute={{ name: 'TaskCreate' }}
+                initialRoute={{ name: 'SearchPage' }}
                 renderScene={this.renderScene}>
             </Navigator>
         );

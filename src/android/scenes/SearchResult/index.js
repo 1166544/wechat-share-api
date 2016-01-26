@@ -8,43 +8,12 @@ import React, {
     ListView,
     Text,
     Component
-} from 'react-native';
+    } from 'react-native';
 
-var PropertyView = require('./PropertyView');
+class SearchResult extends Component {
 
-/**
- * 定义样式
- */
-const styles = StyleSheet.create({
-    thumb: {
-        width: 80,
-        height: 80,
-        marginRight: 10
-    },
-    textContainer: {
-        flex: 1
-    },
-    separator: {
-        height: 1,
-        backgroundColor: '#dddddd'
-    },
-    price: {
-        fontSize: 25,
-        fontWeight: 'bold',
-        color: '#48BBEC'
-    },
-    title: {
-        fontSize: 20,
-        color: '#656565'
-    },
-    rowContainer: {
-        flexDirection: 'row',
-        padding: 10
-    }
-});
-
-class SearchResults extends Component {
     constructor(props) {
+        super(props);
         var dataChange = {rowHasChanged: (r1, r2) => r1.guid !== r2.guid};
         var dataSource = new ListView.DataSource(dataChange);
         this.state = { dataSource: dataSource.cloneWithRows(this.props.listings) };
@@ -63,7 +32,7 @@ class SearchResults extends Component {
         //    passProps: {property: property}
         //});
         this.props.navigator.push({
-            name: 'PropertyView'
+            name: 'TaskView'
         });
     }
 
@@ -103,7 +72,37 @@ class SearchResults extends Component {
                 renderRow={this.renderRow.bind(this)}/>
         );
     }
-
 }
 
-module.exports = SearchResults;
+/**
+ * 定义样式
+ */
+const styles = StyleSheet.create({
+    thumb: {
+        width: 80,
+        height: 80,
+        marginRight: 10
+    },
+    textContainer: {
+        flex: 1
+    },
+    separator: {
+        height: 1,
+        backgroundColor: '#dddddd'
+    },
+    price: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        color: '#48BBEC'
+    },
+    title: {
+        fontSize: 20,
+        color: '#656565'
+    },
+    rowContainer: {
+        flexDirection: 'row',
+        padding: 10
+    }
+});
+
+module.exports = SearchResult;
