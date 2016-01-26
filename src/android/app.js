@@ -6,10 +6,9 @@ import React, {
     } from 'react-native';
 
 // 子页面
-var SearchResult = require('./scenes/SearchResult');
-var SearchPage = require('./scenes/SearchPage');
-var SearchDetail = require('./scenes/SearchDetail');
-
+var SearchResult    = require('./scenes/SearchResult');
+var SearchPage      = require('./scenes/SearchPage');
+var SearchDetail    = require('./scenes/SearchDetail');
 class MyReact extends Component {
 
     /**
