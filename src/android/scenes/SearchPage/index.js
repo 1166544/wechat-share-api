@@ -7,7 +7,8 @@ import React, {
     View,
     TouchableHighlight,
     Image,
-    Component
+    Component,
+    ActivityIndicatorIOS
     } from 'react-native';
 
 class SearchPage extends Component {
@@ -33,10 +34,11 @@ class SearchPage extends Component {
     _handleResponse(response) {
         this.setState({ isLoading: false });
         if (response.application_response_code.substr(0, 1) === '1') {
-            this.props.navigator.push({
-                name: 'TaskList'
-            });
             console.log(response);
+            this.props.navigator.push({
+                name: 'SearchResult',
+                params: {listings: response.listings}
+            });
         } else {
             this.setState({ message: 'Location error plaese try again.' });
         }
@@ -55,7 +57,6 @@ class SearchPage extends Component {
             .catch(error => {
                 this.setState({isLoading: false, message: 'Something bad happend ' + error});
             });
-
     }
 
     /**
@@ -88,6 +89,7 @@ class SearchPage extends Component {
      * @param event
      */
     onSearchTextChanged(event) {
+        console.log('onSearchTextChanged: ' + event.nativeEvent.text);
         this.setState({ searchString: event.nativeEvent.text });
     }
 
@@ -95,11 +97,11 @@ class SearchPage extends Component {
      * 渲染逻辑
      */
     render(){
-        var spinner = <View/>
-        //this.state.isLoading ?
-        //(<ActivityIndicatorIOS hidden='true' size='large'/>)
-        //:
-        //(<View/>);
+
+        var spinner = this.state.isLoading ?
+        (<ActivityIndicatorIOS hidden='true' size='large'/>)
+        :
+        (<View/>);
 
         return (
             <View style={styles.container}>
@@ -125,7 +127,7 @@ class SearchPage extends Component {
                     <Text style={styles.buttonText}>Location</Text>
                 </TouchableHighlight>
                 <Image source={require('../../images/house.png')} style={styles.image}/>
-            {spinner}
+                {spinner}
                 <Text style={styles.description}>{this.state.message}</Text>
             </View>
         );

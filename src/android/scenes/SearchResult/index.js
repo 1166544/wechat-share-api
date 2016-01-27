@@ -14,9 +14,10 @@ class SearchResult extends Component {
 
     constructor(props) {
         super(props);
-        var dataChange = {rowHasChanged: (r1, r2) => r1.guid !== r2.guid};
+        //var dataChange = {rowHasChanged: (r1, r2) => r1.guid !== r2.guid};
+        var dataChange = true;
         var dataSource = new ListView.DataSource(dataChange);
-        this.state = { dataSource: dataSource.cloneWithRows(this.props.listings) };
+        this.state = { dataSource: dataSource.cloneWithRows(this.props.params.listings) };
     }
 
     /**
@@ -32,7 +33,8 @@ class SearchResult extends Component {
         //    passProps: {property: property}
         //});
         this.props.navigator.push({
-            name: 'TaskView'
+            name: 'SearchDetail',
+            params: {property: property}
         });
     }
 
