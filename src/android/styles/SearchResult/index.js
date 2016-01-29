@@ -30,6 +30,36 @@ const styles = StyleSheet.create({
     rowContainer: {
         flexDirection: 'row',
         padding: 10
+    },
+    container: {
+        flex: 1
+    },
+    toolbar: {
+        height: 56,
+        backgroundColor: '#999999'
+    },
+    rowCount: {
+        fontSize: 20,
+        textAlign: 'right',
+        color: 'gray',
+        margin: 10,
+        marginLeft: 15
+    },
+    rowDetailsContainer: {
+        flex: 1
+    },
+    rowTitle: {
+        fontSize: 15,
+        textAlign: 'left',
+        marginTop: 10,
+        marginBottom: 4,
+        marginRight: 10,
+        color: '#FF6600'
+    },
+    rowDetailsLine: {
+        fontSize: 12,
+        marginBottom: 10,
+        color: 'gray'
     }
 });
 

@@ -10,17 +10,16 @@ import React, {
     Component
     } from 'react-native';
 
-let styles          = require('../../styles/SearchResult');
-let SearchConfig    = require('../../core/CoreConfig');
+let styles = require('../../styles/SearchResult');
 
 class SearchResult extends Component {
 
     constructor(props) {
         super(props);
-        //var dataChange = {rowHasChanged: (r1, r2) => r1.guid !== r2.guid};
-        var dataChange = true;
+        var dataChange = {rowHasChanged: (r1, r2) => r1.guid !== r2.guid};
+        //var dataChange = true;
         var dataSource = new ListView.DataSource(dataChange);
-        this.state = { dataSource: dataSource.cloneWithRows(this.props.params.listings) };
+        this.state = { dataSource: dataSource.cloneWithRows(this.props.route.params.listings) };
     }
 
     /**
@@ -36,7 +35,7 @@ class SearchResult extends Component {
         //    passProps: {property: property}
         //});
         this.props.navigator.push({
-            name: SearchConfig.SEARCH_DETAIL_VIEW,
+            name: 'SearchDetail',
             params: {property: property}
         });
     }

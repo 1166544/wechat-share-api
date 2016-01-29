@@ -20,22 +20,17 @@ class MyReact extends Component {
      * @returns {*}
      */
     renderScene (route, navigator) {
-        var view;
         switch(route.name){
             case SearchConfig.SEARCH_RESULT_VIEW:
-                view = (<SearchResult route={route} navigator={navigator} />);
+                return (<SearchResult route={route} navigator={navigator} />);
                 break;
             case SearchConfig.SEARCH_PAGE_VIEW:
-                view = (<SearchPage route={route} navigator={navigator} />);
+                return (<SearchPage route={route} navigator={navigator} />);
                 break;
             case SearchConfig.SEARCH_DETAIL_VIEW:
-                view = (<SearchDetail route={route} navigator={navigator} />);
-                break;
-            default:
-                view = null;
+                return (<SearchDetail route={route} navigator={navigator} />);
                 break;
         }
-        return view;
     }
 
     /**
@@ -45,6 +40,7 @@ class MyReact extends Component {
     render() {
         return (
             <Navigator
+                tintColor='#FF6600'
                 initialRoute={{ name: SearchConfig.SEARCH_PAGE_VIEW }}
                 renderScene={this.renderScene}>
             </Navigator>
