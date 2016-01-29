@@ -6,9 +6,11 @@ import React, {
     } from 'react-native';
 
 // 子页面
-var SearchResult    = require('./scenes/SearchResult');
-var SearchPage      = require('./scenes/SearchPage');
-var SearchDetail    = require('./scenes/SearchDetail');
+let SearchResult    = require('./scenes/SearchResult');
+let SearchPage      = require('./scenes/SearchPage');
+let SearchDetail    = require('./scenes/SearchDetail');
+let SearchConfig    = require('./core/CoreConfig');
+
 class MyReact extends Component {
 
     /**
@@ -20,13 +22,13 @@ class MyReact extends Component {
     renderScene (route, navigator) {
         var view;
         switch(route.name){
-            case 'SearchResult':
+            case SearchConfig.SEARCH_RESULT_VIEW:
                 view = (<SearchResult route={route} navigator={navigator} />);
                 break;
-            case 'SearchPage':
+            case SearchConfig.SEARCH_PAGE_VIEW:
                 view = (<SearchPage route={route} navigator={navigator} />);
                 break;
-            case 'SearchDetail':
+            case SearchConfig.SEARCH_DETAIL_VIEW:
                 view = (<SearchDetail route={route} navigator={navigator} />);
                 break;
             default:
@@ -43,7 +45,7 @@ class MyReact extends Component {
     render() {
         return (
             <Navigator
-                initialRoute={{ name: 'SearchPage' }}
+                initialRoute={{ name: SearchConfig.SEARCH_PAGE_VIEW }}
                 renderScene={this.renderScene}>
             </Navigator>
         );

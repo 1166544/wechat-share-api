@@ -10,8 +10,9 @@ import React, {
     Component
     } from 'react-native';
 
-let SearchResult = require('../SearchResult');
-let styles = require('../../styles/SearchPage');
+let SearchResult    = require('../SearchResult');
+let styles          = require('../../styles/SearchPage');
+let SearchConfig    = require('../../core/CoreConfig');
 
 class SearchPage extends Component {
 
@@ -38,7 +39,7 @@ class SearchPage extends Component {
         if (response.application_response_code.substr(0, 1) === '1') {
             console.log(response);
             this.props.navigator.push({
-                name: 'SearchResult',
+                name: SearchConfig.SEARCH_RESULT_VIEW,
                 component: SearchResult,
                 params: {listings: response.listings}
             });

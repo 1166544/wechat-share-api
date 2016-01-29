@@ -10,7 +10,8 @@ import React, {
     Component
     } from 'react-native';
 
-let styles = require('../../styles/SearchResult');
+let styles          = require('../../styles/SearchResult');
+let SearchConfig    = require('../../core/CoreConfig');
 
 class SearchResult extends Component {
 
@@ -35,7 +36,7 @@ class SearchResult extends Component {
         //    passProps: {property: property}
         //});
         this.props.navigator.push({
-            name: 'SearchDetail',
+            name: SearchConfig.SEARCH_DETAIL_VIEW,
             params: {property: property}
         });
     }
