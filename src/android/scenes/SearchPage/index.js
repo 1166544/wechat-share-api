@@ -55,6 +55,7 @@ class SearchPage extends Component {
      * @private
      */
     _executeQuery(query) {
+        if(this.state.isLoading) return;
         this.setState({isLoading: true, message: 'Loading.. please wait.'});
         fetch(query)
             .then(response => response.json())
@@ -111,7 +112,7 @@ class SearchPage extends Component {
      */
     render(){
 
-        var spinner = this.state.showError ?
+        var spinner = this.state.showError || this.state.isLoading ?
         (<View style={styles.erroContainer}>
             <Text style={styles.errorText}>{this.state.message}</Text>
         </View>)
@@ -120,7 +121,6 @@ class SearchPage extends Component {
 
         return (
             <View>
-
 
                 {spinner}
 
