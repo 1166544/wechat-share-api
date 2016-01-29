@@ -16,6 +16,21 @@ const styles = StyleSheet.create({
         marginTop: 20,
         alignItems: 'center'
     },
+    erroContainer: {
+        marginBottom: 1,
+        backgroundColor: '#c0ff00',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: '#8bb900',
+        borderWidth: 1,
+        flex: 1,
+        flexDirection: 'row'
+    },
+    errorText: {
+        fontSize: 12,
+        textAlign: 'center',
+        color: '#2b3900'
+    },
     flowRight: {
         flexDirection: 'row',
         alignItems: 'center',

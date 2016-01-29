@@ -25,7 +25,8 @@ class SearchPage extends Component {
         this.state = {
             searchString: 'london',
             isLoading: false,
-            message: ''
+            message: '',
+            showError: false
         };
     }
 
@@ -84,7 +85,14 @@ class SearchPage extends Component {
                 this._executeQuery(query);
             },
                 error => {
-                this.setState({ message: 'There was a problem with obtaining your location: ' + error });
+                this.setState({ showError: true, message: 'There was a problem with obtaining your location: ' + error });
+                this.timer = setTimeout(
+                    () => {
+                        this.timer && clearTimeout(this.timer);
+                        this.setState({ showError: false, message: '' });
+                    },
+                    2000
+                );
             }
         );
     }
@@ -94,7 +102,7 @@ class SearchPage extends Component {
      * @param event
      */
     onSearchTextChanged(event) {
-        console.log('onSearchTextChanged: ' + event.nativeEvent.text);
+        // console.log('onSearchTextChanged: ' + event.nativeEvent.text);
         this.setState({ searchString: event.nativeEvent.text });
     }
 
@@ -103,37 +111,43 @@ class SearchPage extends Component {
      */
     render(){
 
-        var spinner = this.state.isLoading ?
-        (<View><Text>Loading...</Text></View>)
+        var spinner = this.state.showError ?
+        (<View style={styles.erroContainer}>
+            <Text style={styles.errorText}>{this.state.message}</Text>
+        </View>)
         :
         (<View/>);
 
         return (
-            <View style={styles.container}>
-                <Text style={styles.description}>Search for house to buy!</Text>
-                <Text style={styles.description}>Search by place-name, postcode or search near your location.</Text>
-                <View style={styles.flowRight}>
-                    <TextInput
-                        style={styles.searchInput}
-                        placeholder='Search via name or postcode'
-                        value={this.state.searchString}
-                        onChange={this.onSearchTextChanged.bind(this)}/>
+            <View>
+
+
+                {spinner}
+
+                <View style={styles.container}>
+                    <Text style={styles.description}>Search for house to buy!</Text>
+                    <Text style={styles.description}>Search by place-name, postcode or search near your location.</Text>
+                    <View style={styles.flowRight}>
+                        <TextInput
+                            style={styles.searchInput}
+                            placeholder='Search via name or postcode'
+                            value={this.state.searchString}
+                            onChange={this.onSearchTextChanged.bind(this)}/>
+                        <TouchableHighlight
+                            style={styles.button}
+                            underlayColor='#99d9f4'
+                            onPress={this.onSearchPressed.bind(this)}>
+                            <Text style={[styles.buttonText, styles.buttonTextSearch]}>SEARCH</Text>
+                        </TouchableHighlight>
+                    </View>
                     <TouchableHighlight
                         style={styles.button}
-                        underlayColor='#99d9f4'
-                        onPress={this.onSearchPressed.bind(this)}>
-                        <Text style={[styles.buttonText, styles.buttonTextSearch]}>SEARCH</Text>
+                        onPress={this.onLocationPressed.bind(this)}
+                        underlayColor='#99d9f4'>
+                        <Text style={styles.buttonText}>Location</Text>
                     </TouchableHighlight>
+                    <Image source={require('../../images/house.png')} style={styles.image}/>
                 </View>
-                <TouchableHighlight
-                    style={styles.button}
-                    onPress={this.onLocationPressed.bind(this)}
-                    underlayColor='#99d9f4'>
-                    <Text style={styles.buttonText}>Location</Text>
-                </TouchableHighlight>
-                <Image source={require('../../images/house.png')} style={styles.image}/>
-                {spinner}
-                <Text style={styles.description}>{this.state.message}</Text>
             </View>
         );
     }
