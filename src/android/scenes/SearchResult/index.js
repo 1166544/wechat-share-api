@@ -10,16 +10,17 @@ import React, {
     Component
     } from 'react-native';
 
-let styles = require('../../styles/SearchResult');
+let styles          = require('../../styles/SearchResult');
+let SearchConfig    = require('../../core/CoreConfig');
 
 class SearchResult extends Component {
 
     constructor(props) {
         super(props);
         var dataChange = {rowHasChanged: (r1, r2) => r1.guid !== r2.guid};
-        //var dataChange = true;
         var dataSource = new ListView.DataSource(dataChange);
         this.state = { dataSource: dataSource.cloneWithRows(this.props.route.params.listings) };
+        // console.log(this.state);
     }
 
     /**
@@ -27,17 +28,13 @@ class SearchResult extends Component {
      * @param propertyGuid
      */
     rowPressed(propertyGuid) {
-        var property = this.props.listings.filter(prop => prop.guid === propertyGuid[0]);
 
-        //this.propps.navigator.push({
-        //    title: 'Property',
-        //    component: PropertyView,
-        //    passProps: {property: property}
-        //});
+        var property = this.props.route.params.listings.filter(prop => prop.guid === propertyGuid)[0];
         this.props.navigator.push({
-            name: 'SearchDetail',
+            name: SearchConfig.SEARCH_DETAIL_VIEW,
             params: {property: property}
         });
+
     }
 
     /**

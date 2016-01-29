@@ -75,6 +75,7 @@ class SearchPage extends Component {
      * 定位按钮按下处理
      */
     onLocationPressed() {
+        console.log('onLocationPressed');
         navigator.geolocation.getCurrentPosition(
                 location => {
                 var search = location.coords.latitude + ',' + location.coords.longitude;
@@ -121,7 +122,7 @@ class SearchPage extends Component {
                         style={styles.button}
                         underlayColor='#99d9f4'
                         onPress={this.onSearchPressed.bind(this)}>
-                        <Text syle={styles.buttonText}>GO</Text>
+                        <Text style={[styles.buttonText, styles.buttonTextSearch]}>SEARCH</Text>
                     </TouchableHighlight>
                 </View>
                 <TouchableHighlight

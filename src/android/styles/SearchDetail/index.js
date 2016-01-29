@@ -7,7 +7,7 @@ import React, { StyleSheet } from 'react-native';
  */
 const styles = StyleSheet.create({
     container: {
-        marginTop: 65
+        marginTop: 10
     },
     heading: {
         backgroundColor: '#f8f8f8'

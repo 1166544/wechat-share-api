@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     },
     container: {
         padding: 30,
-        marginTop: 65,
+        marginTop: 20,
         alignItems: 'center'
     },
     flowRight: {
@@ -22,9 +22,13 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch'
     },
     buttonText: {
-        fontSize: 18,
+        fontSize: 16,
         color: 'white',
         alignSelf: 'center'
+    },
+    buttonTextSearch: {
+        marginLeft: 4,
+        marginRight: 4
     },
     button: {
         height:36,
@@ -42,7 +46,7 @@ const styles = StyleSheet.create({
         height: 36,
         padding: 4,
         marginRight: 5,
-        flex: 4,
+        flex: 2,
         fontSize: 18,
         borderWidth: 1,
         borderColor: '#48BBEC',
