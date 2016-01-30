@@ -6,7 +6,8 @@ import React, {
     View,
     Text,
     Component,
-    ScrollView
+    ScrollView,
+    ToolbarAndroid
     } from 'react-native';
 
 let styles = require('../../styles/SearchDetail');
@@ -21,8 +22,13 @@ class SearchDetail extends Component {
         }
         var price = property.price_formatted.split(' ')[0];
         return (
-            <ScrollView>
-                <View style={styles.container}>
+            <View style={styles.container}>
+                <ToolbarAndroid style={styles.toolbar}
+                    title={this.props.route.params.title}
+                    navIcon={require('../../images/arrow_back.png')}
+                    onIconClicked={this.props.navigator.pop}
+                    titleColor={'#FFFFFF'}/>
+                <ScrollView>
                     <Image style={styles.image} source={{uri: property.img_url}} />
                     <View style={styles.heading}>
                         <Text style={styles.price}>${price}</Text>
@@ -31,8 +37,8 @@ class SearchDetail extends Component {
                     </View>
                     <Text style={styles.description}>{stats}</Text>
                     <Text style={styles.description}>{property.summary}</Text>
-                </View>
-            </ScrollView>
+                </ScrollView>
+            </View>
         );
     }
 

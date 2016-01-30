@@ -42,7 +42,10 @@ class SearchPage extends Component {
             this.props.navigator.push({
                 name: SearchConfig.SEARCH_RESULT_VIEW,
                 component: SearchResult,
-                params: {listings: response.listings}
+                params: {
+                    listings: response.listings,
+                    title: 'Property of: ' + this.state.searchString
+                }
             });
         } else {
             this.setState({ message: 'Location error plaese try again.' });

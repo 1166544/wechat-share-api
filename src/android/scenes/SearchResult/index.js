@@ -7,7 +7,8 @@ import React, {
     TouchableHighlight,
     ListView,
     Text,
-    Component
+    Component,
+    ToolbarAndroid
     } from 'react-native';
 
 let styles          = require('../../styles/SearchResult');
@@ -32,7 +33,10 @@ class SearchResult extends Component {
         var property = this.props.route.params.listings.filter(prop => prop.guid === propertyGuid)[0];
         this.props.navigator.push({
             name: SearchConfig.SEARCH_DETAIL_VIEW,
-            params: {property: property}
+            params: {
+                property: property,
+                title: 'Detail: ' + property.title
+            }
         });
 
     }
@@ -68,9 +72,16 @@ class SearchResult extends Component {
      */
     render() {
         return (
-            <ListView
-                dataSource={this.state.dataSource}
-                renderRow={this.renderRow.bind(this)}/>
+            <View style={styles.container}>
+                <ToolbarAndroid style={styles.toolbar}
+                    title={this.props.route.params.title}
+                    navIcon={require('../../images/arrow_back.png')}
+                    onIconClicked={this.props.navigator.pop}
+                    titleColor={'#FFFFFF'}/>
+                <ListView
+                    dataSource={this.state.dataSource}
+                    renderRow={this.renderRow.bind(this)}/>
+            </View>
         );
     }
 }
