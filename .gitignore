@@ -32,3 +32,8 @@ local.properties
 #
 node_modules/
 npm-debug.log
+
+android/app/build.gradle
+android/gradle.properties
+android/app/james.keystore
+android/app/build.gradle
