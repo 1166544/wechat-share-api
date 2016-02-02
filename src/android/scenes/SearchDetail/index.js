@@ -8,7 +8,7 @@ import React, {
     Component,
     ScrollView,
     ToolbarAndroid
-    } from 'react-native';
+} from 'react-native';
 
 let styles = require('../../styles/SearchDetail');
 
@@ -17,19 +17,19 @@ class SearchDetail extends Component {
     render() {
         var property = this.props.route.params.property;
         var stats = property.bedroom_number + ' bed ' + property.property_type;
-        if(property.bathroom_number) {
+        if (property.bathroom_number) {
             stats += ', ' + property.bathroom_number + ' ' + (property.bathroom_number > 1 ? 'bathrooms' : 'bathroom');
         }
         var price = property.price_formatted.split(' ')[0];
         return (
             <View style={styles.container}>
                 <ToolbarAndroid style={styles.toolbar}
-                    title={this.props.route.params.title}
-                    navIcon={require('../../images/arrow_back.png')}
-                    onIconClicked={this.props.navigator.pop}
-                    titleColor={'#FFFFFF'}/>
+                                title={this.props.route.params.title}
+                                navIcon={require('../../images/arrow_back.png')}
+                                onIconClicked={this.props.navigator.pop}
+                                titleColor={'#FFFFFF'}/>
                 <ScrollView>
-                    <Image style={styles.image} source={{uri: property.img_url}} />
+                    <Image style={styles.image} source={{uri: property.img_url}}/>
                     <View style={styles.heading}>
                         <Text style={styles.price}>${price}</Text>
                         <Text style={styles.title}>${property.title}</Text>
@@ -44,4 +44,4 @@ class SearchDetail extends Component {
 
 }
 
-module.exports =  SearchDetail;
+module.exports = SearchDetail;

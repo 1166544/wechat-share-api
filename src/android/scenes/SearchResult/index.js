@@ -9,10 +9,10 @@ import React, {
     Text,
     Component,
     ToolbarAndroid
-    } from 'react-native';
+} from 'react-native';
 
-let styles          = require('../../styles/SearchResult');
-let SearchConfig    = require('../../core/CoreConfig');
+let styles       = require('../../styles/SearchResult');
+let SearchConfig = require('../../core/CoreConfig');
 
 class SearchResult extends Component {
 
@@ -20,7 +20,7 @@ class SearchResult extends Component {
         super(props);
         var dataChange = {rowHasChanged: (r1, r2) => r1.guid !== r2.guid};
         var dataSource = new ListView.DataSource(dataChange);
-        this.state = { dataSource: dataSource.cloneWithRows(this.props.route.params.listings) };
+        this.state = {dataSource: dataSource.cloneWithRows(this.props.route.params.listings)};
         // console.log(this.state);
     }
 
@@ -47,7 +47,7 @@ class SearchResult extends Component {
      * @param sectionID
      * @param rowID
      */
-    renderRow(rowData, sectionID, rowID){
+    renderRow(rowData, sectionID, rowID) {
         var price = rowData.price_formatted.split(' ')[0];
 
         return (
@@ -74,10 +74,10 @@ class SearchResult extends Component {
         return (
             <View style={styles.container}>
                 <ToolbarAndroid style={styles.toolbar}
-                    title={this.props.route.params.title}
-                    navIcon={require('../../images/arrow_back.png')}
-                    onIconClicked={this.props.navigator.pop}
-                    titleColor={'#FFFFFF'}/>
+                                title={this.props.route.params.title}
+                                navIcon={require('../../images/arrow_back.png')}
+                                onIconClicked={this.props.navigator.pop}
+                                titleColor={'#FFFFFF'}/>
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={this.renderRow.bind(this)}/>

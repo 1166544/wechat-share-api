@@ -36,12 +36,12 @@ var {
     View,
     TouchableOpacity,
     Platform
-} = React;
+    } = React;
 
 var GiftedListView = require('react-native-gifted-listview');
 
 module.exports = React.createClass({
-    getInitialState: function(){
+    getInitialState: function () {
         return {
             renderRow: this.props.renderRow,
             backgroundColor: this.props.backgroundColor ? this.props.backgroundColor : '#FFFFFF',
@@ -49,16 +49,16 @@ module.exports = React.createClass({
             renderHeader: this.props.renderHeader ? this.props.renderHeader : null
         };
     },
-    onRefresh: function(page=1, callback, options){
+    onRefresh: function (page = 1, callback, options) {
         this.props.onRefresh(page, callback);
     },
-    renderRow: function(row){
+    renderRow: function (row) {
         return this.state.renderRow(row);
     },
-    render: function(){
-        return(
+    render: function () {
+        return (
             <View style={[styles.container, {backgroundColor: this.state.backgroundColor}, this.props.style]}>
-                <View style={styles.navBarSpace} />
+                <View style={styles.navBarSpace}/>
                 <GiftedListView rowView={this.renderRow}
                                 onFetch={this.onRefresh}
                                 paginationAllLoadedView={this.renderPaginationAllLoadedView}
@@ -79,23 +79,23 @@ module.exports = React.createClass({
             </View>
         );
     },
-    renderPaginationAllLoadedView: function(){
-        return(
+    renderPaginationAllLoadedView: function () {
+        return (
             <View />
         );
     },
-    renderPaginationWaitingView: function(paginateCallback) {
+    renderPaginationWaitingView: function (paginateCallback) {
         return (
             <TouchableOpacity style={styles.paginationView}
                               onPress={paginateCallback}>
                 <Text style={styles.loadMoreText}>
                     {this.state.loadMoreText}
                 </Text>
-           </TouchableOpacity>
+            </TouchableOpacity>
         );
     },
-    renderHeaderView: function(){
-        if(this.state.renderHeader){
+    renderHeaderView: function () {
+        if (this.state.renderHeader) {
             return this.props.renderHeader();
         }
         return (null);

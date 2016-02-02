@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         marginRight: 4
     },
     button: {
-        height:36,
+        height: 36,
         flex: 1,
         flexDirection: 'row',
         backgroundColor: '#48BBEC',

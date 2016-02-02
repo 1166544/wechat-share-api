@@ -8,11 +8,11 @@ import React, {
     TouchableHighlight,
     Image,
     Component
-    } from 'react-native';
+} from 'react-native';
 
-let SearchResult    = require('../SearchResult');
-let styles          = require('../../styles/SearchPage');
-let SearchConfig    = require('../../core/CoreConfig');
+let SearchResult = require('../SearchResult');
+let styles       = require('../../styles/SearchPage');
+let SearchConfig = require('../../core/CoreConfig');
 
 class SearchPage extends Component {
 
@@ -36,7 +36,7 @@ class SearchPage extends Component {
      * @private
      */
     _handleResponse(response) {
-        this.setState({ isLoading: false });
+        this.setState({isLoading: false});
         if (response.application_response_code.substr(0, 1) === '1') {
             console.log(response);
             this.props.navigator.push({
@@ -48,7 +48,7 @@ class SearchPage extends Component {
                 }
             });
         } else {
-            this.setState({ message: 'Location error plaese try again.' });
+            this.setState({message: 'Location error plaese try again.'});
         }
     }
 
@@ -58,7 +58,7 @@ class SearchPage extends Component {
      * @private
      */
     _executeQuery(query) {
-        if(this.state.isLoading) return;
+        if (this.state.isLoading) return;
         this.setState({isLoading: true, message: 'Loading.. please wait.'});
         fetch(query)
             .then(response => response.json())
@@ -82,18 +82,18 @@ class SearchPage extends Component {
     onLocationPressed() {
         console.log('onLocationPressed');
         navigator.geolocation.getCurrentPosition(
-                location => {
+            location => {
                 var search = location.coords.latitude + ',' + location.coords.longitude;
-                this.setState({ searchString: search });
+                this.setState({searchString: search});
                 var query = urlForQueryAndPage('center_point', search, 1);
                 this._executeQuery(query);
             },
-                error => {
-                this.setState({ showError: true, message: 'There was a problem with obtaining your location: ' + error });
+            error => {
+                this.setState({showError: true, message: 'There was a problem with obtaining your location: ' + error});
                 this.timer = setTimeout(
                     () => {
                         this.timer && clearTimeout(this.timer);
-                        this.setState({ showError: false, message: '' });
+                        this.setState({showError: false, message: ''});
                     },
                     2000
                 );
@@ -107,20 +107,20 @@ class SearchPage extends Component {
      */
     onSearchTextChanged(event) {
         // console.log('onSearchTextChanged: ' + event.nativeEvent.text);
-        this.setState({ searchString: event.nativeEvent.text });
+        this.setState({searchString: event.nativeEvent.text});
     }
 
     /**
      * 渲染逻辑
      */
-    render(){
+    render() {
 
         var spinner = this.state.showError || this.state.isLoading ?
-        (<View style={styles.erroContainer}>
-            <Text style={styles.errorText}>{this.state.message}</Text>
-        </View>)
-        :
-        (<View/>);
+            (<View style={styles.erroContainer}>
+                <Text style={styles.errorText}>{this.state.message}</Text>
+            </View>)
+            :
+            (<View/>);
 
         return (
             <View>
