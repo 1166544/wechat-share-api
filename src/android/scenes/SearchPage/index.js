@@ -180,4 +180,4 @@ function urlForQueryAndPage(key, value, pageNumber) {
     return 'http://api.nestoria.co.uk/api?' + querystring;
 }
 
-module.exports = SearchPage;
+export default SearchPage;

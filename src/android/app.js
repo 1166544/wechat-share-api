@@ -64,4 +64,4 @@ class MyReact extends Component {
     }
 }
 
-module.exports = MyReact;
+export default MyReact;

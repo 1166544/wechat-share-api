@@ -86,4 +86,4 @@ class SearchResult extends Component {
     }
 }
 
-module.exports = SearchResult;
+export default SearchResult;

@@ -44,4 +44,4 @@ class SearchDetail extends Component {
 
 }
 
-module.exports = SearchDetail;
+export default SearchDetail;
