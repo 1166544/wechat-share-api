@@ -1,0 +1,13 @@
+build
+client
+config
+logs
+oldProject
+run
+test
+.history
+.idea
+.vscode
+node_modules
+mobiles
+view

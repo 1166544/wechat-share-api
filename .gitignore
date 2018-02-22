@@ -1,39 +1,36 @@
-# OSX
-#
-.DS_Store
-
-# Xcode
-#
-build/
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata
-*.xccheckout
-*.moved-aside
-DerivedData
-*.hmap
-*.ipa
-*.xcuserstate
-project.xcworkspace
-
-# Android/IJ
-#
+# IntelliJ project files
 .idea
-.gradle
-local.properties
+*.iml
+out
+gen
+# Created by .ignore support plugin (hsz.mobi)
 
-# node.js
-#
-node_modules/
+/node_modules
+coverage/
+*.log
 npm-debug.log
-
-android/app/build.gradle
-android/gradle.properties
-android/app/james.keystore
-android/app/build.gradle
+npm-debug.log.*
+.logs/
+logs/
+/sea-modules/
+*.swp
+run/
+*-run/
+.DS_Store
+test/fixtures/antx/conf/
+*-tair.xml
+assembly
+process.dev.json
+test/**/proxy_class_map.js
+test/fixtures/proxy_tpl/**/proxy*
+test/fixtures/proxy_tpl/**/.gitignore
+test/**/node_hsf_config_snapshots/
+/app/public/
+/app/view
+/app/undefined
+_site
+~
+.tmp/
+*.tmp
+*.lock
+.history

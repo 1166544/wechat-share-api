@@ -1,13 +1,55 @@
 {
-  "name": "MyReact",
+  "name": "wechat-share-api",
   "version": "0.0.1",
+  "description": "A wechat share api project",
+  "keywords": [
+    "SEO",
+    "Node.js",
+    "Koa",
+    "Egg"
+  ],
+  "author": "James Liauw",
+  "license": "ISC",
   "private": true,
-  "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
-  },
   "dependencies": {
-    "react-native": "^0.19.0-rc",
-    "react-native-gifted-listview": "0.0.7",
-    "react-native-vector-icons": "^1.0.3"
+    "body-parser": "~1.13.2",
+    "clean-css": "^4.1.9",
+    "cookie-parser": "~1.3.5",
+    "cross-env": "^3.2.3",
+    "egg": "^1.4.0",
+    "egg-cookies": "^2.2.1",
+    "egg-development-proxyagent": "^1.0.0",
+    "egg-multipart": "^1.3.0",
+    "egg-oss": "^1.0.2",
+    "egg-view-nunjucks": "^2.0.0",
+    "formstream": "^1.1.0",
+    "md5": "^2.2.1",
+    "moment": "^2.18.1",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0",
+    "sha1": "^1.1.1",
+    "stream-wormhole": "^1.0.3",
+    "uglify-js": "^3.3.9",
+    "walk": "^2.3.9",
+    "webpack-zepto": "0.0.1",
+    "egg-bin": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamesliauw/wechat-share-api.git"
+  },
+  "scripts": {
+    "serve": "cross-env NODE_ENV=local egg-bin dev --cluster 2",
+    "dev": "cross-env EGG_SERVER_ENV=prod NODE_ENV=prod node dev.js --port",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint-serve": "cd app && eslint .",
+    "lint-client": "cd client && eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
   }
 }

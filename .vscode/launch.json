@@ -1,0 +1,41 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+          "name": "Start Egg",
+          "type": "node",
+          "request": "launch",
+          "program": "${workspaceRoot}/dispatch.js",
+          "cwd": "${workspaceRoot}",
+          "runtimeArgs": [
+            "--debug"
+          ],
+          "env": {
+            "NODE_ENV": "local",
+            "http_proxy": "http://127.0.0.1:8888"
+          },
+          "port": 5858
+      },
+      {
+          "name": "Attach Agent", 
+          "type": "node",
+          "request": "attach",
+          "port": 5856
+      },
+      {
+          "name": "Attach Worker", 
+          "type": "node",
+          "request": "attach",
+          "port": 5859
+      }
+    ],
+    "compounds": [
+      {
+          "name": "Debug Egg",
+          "configurations": ["Start Egg", "Attach Agent", "Attach Worker"]
+      }
+    ]
+}
