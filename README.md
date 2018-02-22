@@ -51,6 +51,9 @@ http://localhost:7001/api/service/getWeChatSignature
     }
 ```
 
+## 预览
+![API Preview Gif 1](./docs/image.png "API Preview Gif 1")
+
 ## 参考:
 ```js
 https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115
