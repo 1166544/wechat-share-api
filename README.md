@@ -27,10 +27,10 @@ http://localhost:7001/api/service/getWeChatSignature
     "message":"请求成功",
     "data":{
         "wxAccountInfo":{
-            "appId":"wc7889bc60f",      // appid
+            "appId":"your app id",      // appid
             "timestamp":1519265659,     // 时间截
             "nonceStr":"M4vhCXM",       // 加密字符串
-            "signature":"f5617cf42f"    // 比对签名
+            "signature":"your signature no like.. f5617cf42f"    // 比对签名
         },
         "wxShareInfo":{
             "imgUrl":"https://mp.yourdomain.com/montage/images/cover.jpg",  // 分享封面地址
