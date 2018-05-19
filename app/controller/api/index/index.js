@@ -19,8 +19,8 @@ module.exports = (app) => {
             const requestBody = this.ctx.request.body;
             const link = this.utf8ToNative(requestBody.link) || 'https://mp.yourdomain.com/montage/index.html';
             const imgUrl = this.utf8ToNative(requestBody.imgUrl) || 'https://mp.yourdomain.com/montage/images/cover.jpg';
-            const title = this.utf8ToNative(requestBody.title) || '什么鬼！这也要收钱！';
-            const desc = this.utf8ToNative(requestBody.desc) || '那些你以为你知道其实你不知道的值钱的东西。。。';
+            const title = this.utf8ToNative(requestBody.title) || 'This is a title';
+            const desc = this.utf8ToNative(requestBody.desc) || 'This is a description';
             const appId = app.config.weChatShare.appId;
             const appsecret = app.config.weChatShare.appsecret;
             const timestamp = this.getTimeSnap();
