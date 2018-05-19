@@ -51,7 +51,7 @@ module.exports = appInfo => {
         ctoken: true,
         xframe: {
             enable: true,
-            value: 'ALLOW-FROM https://tongji.baidu.com/,https://web.umeng.com/'
+            value: 'ALLOW-FROM https://yourBlockXframe.com/,https://otherBlockXframe.com/'
         },
     };
     
