@@ -51,6 +51,11 @@ http://localhost:7001/api/service/getWeChatSignature
     }
 ```
 
+## 前端调用示例
+```js
+请参考client目录
+```
+
 ## 预览
 ![API Preview Gif 1](./docs/image.png "API Preview Gif 1")
 
